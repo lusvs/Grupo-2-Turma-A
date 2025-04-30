@@ -12,6 +12,9 @@ Lucas Soares
 Criação do escolherNickName - 30/04/2025
 Lucas Soares
 
+Criação do mostrarInstrucoes - 30/04/2025
+Diego Sarti
+
 *******************************************************************************/
 import java.util.*;
 public class Main {
@@ -32,9 +35,7 @@ public class Main {
                     nivelDeJogo();
                     break;
                 case 2:
-                    // carregarInstrucoes();
-                    System.out.println("=========================");
-                    System.out.println("Instruções do jogo...");
+                    mostrarInstrucoes();
                     break;
                 case 3:
                     carregarCreditos();
@@ -87,6 +88,42 @@ public class Main {
                     nivelDeJogo();
             }
     }        
+    
+    public static void mostrarInstrucoes() {
+        
+        System.out.println("======== Instruções ========");
+        System.out.println("Bem-vindo ao Java Survival, um RPG de texto onde sua inteligência em programação será sua principal arma!\n");
+
+        System.out.println("🎯 Objetivo do Jogo:");
+        System.out.println("- Responda corretamente às questões para avançar de nível e acumular pontos.");
+        System.out.println("- Se errar, você perde 1 das suas 3 vidas.");
+        System.out.println("- Ao perder todas as vidas, o jogo reinicia.\n");
+
+        System.out.println("🧠 Como Jogar:");
+        System.out.println("1. Cada missão apresenta uma questão de múltipla escolha.");
+        System.out.println("2. Escolha a alternativa correta digitando a letra correspondente (A, B, C, D).");
+        System.out.println("3. Acertos fazem você avançar e ganhar pontos.");
+        System.out.println("4. Erros fazem você permanecer no nível e perder uma vida.\n");
+
+        System.out.println("💰 Pontuação e Recompensas:");
+        System.out.println("- Pontos acumulados são somados no final do jogo.");
+        System.out.println("- Você pode trocar pontos por vidas com o Mercador Misterioso durante a jornada.\n");
+
+        System.out.println("🏆 Fim de Jogo:");
+        System.out.println("- Ao terminar o jogo, será exibido um resumo com:");
+        System.out.println("  * Total de pontos");
+        System.out.println("  * Acertos e erros");
+        System.out.println("  * Nível alcançado");
+        System.out.println("  * Avaliação final\n");
+
+        System.out.println("📌 Dicas Finais:");
+        System.out.println("- Leia as questões com atenção.");
+        System.out.println("- Gerencie bem suas vidas e seus pontos.");
+        System.out.println("- Use o Mercador com sabedoria.");
+        System.out.println("- E o mais importante: divirta-se enquanto aprende!\n");
+
+        mostrarMenu();
+}
     
     public static void carregarCreditos(){
         System.out.println("========== CRÉDITOS ==========");
