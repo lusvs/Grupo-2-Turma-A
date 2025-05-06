@@ -3,7 +3,7 @@
 Criação do mostrarMenu - 29/04/2025
 Lucas Soares
 
-Criação do carregarCreditos - 29/04/2025
+Criação dos carregarCreditos - 29/04/2025
 Nicolas Ferreira
 
 Criação dos nivelDeJogo - 30/04/2025
@@ -15,10 +15,19 @@ Lucas Soares
 Criação do mostrarInstrucoes - 30/04/2025
 Diego Sarti
 
+Criação do apresentarIntroducao - 05/05/2025
+Nicolas Ferreira
+
 *******************************************************************************/
 import java.util.*;
 public class Main {
     
+    /**
+     * Menu principal do jogo
+     * @author Lucas Soares
+     * @version 1.0
+     * @since 2025-04-29
+    */
     public static void mostrarMenu() {
         Scanner scanner = new Scanner(System.in);
         int opcao;
@@ -50,6 +59,12 @@ public class Main {
             }
     }
     
+    /**
+     * Menu de Nivel de Dificuldade
+     * @author Lucas Soares
+     * @version 1.0
+     * @since 2025-04-30
+    */
     public static void nivelDeJogo() {
         Scanner scanner = new Scanner(System.in);
             System.out.println("===== Dificuldade de Jogo =====");
@@ -89,6 +104,12 @@ public class Main {
             }
     }        
     
+    /**
+     * Introdução e Tutorial do jogo.
+     * @author Diego Sarti
+     * @version 1.0
+     * @since 2025-04-30
+    */
     public static void mostrarInstrucoes() {
         
         System.out.println("======== Instruções ========");
@@ -123,8 +144,14 @@ public class Main {
         System.out.println("- E o mais importante: divirta-se enquanto aprende!\n");
 
         mostrarMenu();
-}
+    }
     
+    /**
+     * Créditos do jogo e agradecimentos.
+     * @author Nicolas Ferreira
+     * @version 1.0
+     * @since 2025-04-29
+    */
     public static void carregarCreditos(){
         System.out.println("========== CRÉDITOS ==========");
         System.out.print("Desenvolvido por: " + "\n" +
@@ -136,6 +163,12 @@ public class Main {
         mostrarMenu();
     }
     
+    /**
+     * Escolher o NickName do Jogador.
+     * @author Lucas Soares
+     * @version 1.0
+     * @since 2025-04-30
+    */
     public static void escolherNickName(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("========== Escolha de Nick ==========");
@@ -143,25 +176,49 @@ public class Main {
         String nickname = scanner.next();
         System.out.println("Este nome ira te acompanhar pelo resto do jogo e NÃO podera ser trocado." + "\n" +
         "Você tem certeza que quer esse nome? [S/N]");
-        char confirmaNome =  scanner.next().toLowerCase().charAt(0);
+        char confirmaNome =  scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minuscula
         
         switch(confirmaNome){
-            case 's':
+            case 's': // Vai definir o nome do jogador
                 // introducao();
                 System.out.println("=========================");
                 System.out.println("Introdução.....");
                 System.out.println("Nome definido: " + nickname);
+                apresentarIntroducao();
                 break;
-            case 'n': 
+            case 'n': // Vai fazer a pergunta do nome novamente
                 escolherNickName();
                 break;
-            default:
+            default: // Vai fazer a pergunta do nome novamente
                 System.out.println("Opção inválida! Tente novamente.");
                 escolherNickName();
         }
     }
+    
+    /**
+     * Apresenta a Introdução do jogo.
+     * @author Nicolas Ferreira
+     * @version 1.0
+     * @since 2025-05-05
+    */
+    public static void apresentarIntroducao() {
+        System.out.println("========== Introdução ==========");
+        
+        System.out.println("O ano é 2147, em um mundo digital distópico controlado por uma superinteligência conhecida como \"Mainframe\".");
+        System.out.println("Essa inteligência foi criada para organizar a programação de todas as máquinas e sistemas do mundo, mas algo deu errado.");
+        System.out.println("O Mainframe se corrompeu e agora governa uma cidade virtual fechada, onde os habitantes estão presos em um ciclo infinito, sem poder acessar o mundo exterior.");
+        System.out.println("\n" + "O último Programador é você " + ", uma pessoa que ainda possui conhecimento suficiente para modificar o código que mantém o Mainframe funcionando.");
+        System.out.println("Você foi capturado e aprisionado dentro de um servidor de dados, e sua missão é escapar e restaurar a liberdade, atacando as falhas no código do Mainframe.");
+        System.out.println("Para isso, você precisará aprender programação básica para reprogramar o sistema e abrir as portas para a liberdade.");
+    }// nickname + 
 
+    /**
+     * printa o Menu principal do jogo
+     * @author Lucas Soares
+     * @version 1.0
+     * @since 2025-04-29
+    */
     public static void main(String[] args) {
-        mostrarMenu();
+        mostrarMenu(); // Printa o Menu principal do jogo.
     }
 }
