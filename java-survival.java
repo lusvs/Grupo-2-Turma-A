@@ -18,6 +18,9 @@ Diego Sarti
 Criação do apresentarIntroducao - 05/05/2025
 Nicolas Ferreira
 
+Criação do VidaPersonagem - 07/05/2025
+Lucas Soares
+
 *******************************************************************************/
 import java.util.*;
 public class Main {
@@ -181,8 +184,6 @@ public class Main {
         switch(confirmaNome){
             case 's': // Vai definir o nome do jogador
                 // introducao();
-                System.out.println("=========================");
-                System.out.println("Introdução.....");
                 System.out.println("Nome definido: " + nickname);
                 apresentarIntroducao();
                 break;
@@ -210,7 +211,21 @@ public class Main {
         System.out.println("\n" + "O último Programador é você " + ", uma pessoa que ainda possui conhecimento suficiente para modificar o código que mantém o Mainframe funcionando.");
         System.out.println("Você foi capturado e aprisionado dentro de um servidor de dados, e sua missão é escapar e restaurar a liberdade, atacando as falhas no código do Mainframe.");
         System.out.println("Para isso, você precisará aprender programação básica para reprogramar o sistema e abrir as portas para a liberdade.");
+        vidaPersonagem();
     }// nickname + 
+    
+    
+    /**
+     * Mostra a vida do jogador.
+     * @author Lucas Soares
+     * @version 1.0
+     * @since 2025-05-07
+    */
+    public static void vidaPersonagem() {
+        System.out.println("========== Vida do Personagem ==========");
+        int vida = 3;
+        System.out.println("❤️ : " + vida);
+    }
 
     /**
      * printa o Menu principal do jogo
