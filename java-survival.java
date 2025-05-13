@@ -27,6 +27,9 @@ Lucas Soares
 Criação do nivelFacil - 11/05/2025
 Lucas Soares
 
+Criação do tabelaFinal - 12/05/2025
+Diego Sarti
+
 *******************************************************************************/
 import java.util.*;
 public class Main {
@@ -221,7 +224,7 @@ public class Main {
     
     /**
      * Mostra a vida do jogador.
-     * @author Lucas Soares
+     * @author Lucas Soares / Diego SArti
      * @version 1.0
      * @since 2025-05-07
     */
@@ -229,7 +232,44 @@ public class Main {
     
     public static void vidaPersonagem() {
         System.out.println("❤️ : " + vida);
+        if(vida < 1){
+            System.out.println("GAME OVER");
+            // mostrarPontuação();
+            tabelaFinal();
+        }
     }
+
+
+      /**
+     * Pontuação do jogo
+     * @author Diego Sarti
+     * @version 1.0
+     * @since 2025-05-12
+    */   
+    static int pontuacao = 0;
+    
+    public static void calculoPontuacao() {
+        int resultado = pontuacao * vida;
+        System.out.println("Sua pontuação base foi: " + pontuacao);
+        System.out.println("Multiplicador de vida (x" + vida + ")");
+        System.out.println("Pontuação final: " + resultado);
+    }
+    
+    
+      /**
+     * Mostra tabela final do jogo
+     * @author Diego Sarti
+     * @version 1.0
+     * @since 2025-05-12
+    */   
+    public static void tabelaFinal() {
+        System.out.println("========== Tabela Final ==========");
+        // System.out.println("Sua pontuação final foi: " + resultado);
+        System.out.println("Quantidade de vidas: " + vida);
+        calculoPontuacao();
+        mostrarMenu();
+    }
+
 
     /**
      * printa o Menu principal do jogo
@@ -311,6 +351,7 @@ public class Main {
                 System.out.println("=========================");
                 vidaPersonagem();
                 questionIndex++; // Avança para a próxima pergunta
+                pontuacao += 50; // Aumenta a pontuação por acerto
             } else {
                 // Se a resposta estiver errada, não avança — a mesma pergunta será repetida e tira uma vida
                 System.out.println("Errado! Tente novamente.");
@@ -321,7 +362,12 @@ public class Main {
         }
         // Quando todas as 10 perguntas forem respondidas corretamente, o jogo termina
         System.out.println("\nParabéns! Você completou o quiz.");
+        
+        tabelaFinal();
     }
+    
+    
+    
 
     /**
      * printa o Menu principal do jogo
