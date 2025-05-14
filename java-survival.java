@@ -30,6 +30,12 @@ Lucas Soares
 Criação do tabelaFinal - 12/05/2025
 Diego Sarti
 
+criação do nivelNormal - 13/05/2025
+Diego Sarti
+
+criação do nivelDificil - 13/05/2025
+Diego Sarti
+
 *******************************************************************************/
 import java.util.*;
 public class Main {
@@ -93,16 +99,12 @@ public class Main {
                     nivelFacil();
                     break;
                 case 2:
-                    // modoNormal();
-                    System.out.println("=========================");
-                    System.out.println("Modo Normal...");
                     apresentarIntroducao();
+                    nivelNormal();
                     break;
                 case 3:
-                    // modoDificil();
-                    System.out.println("=========================");
-                    System.out.println("Modo Dificil...");
                     apresentarIntroducao();
+                    nivelDificil();
                     break;
                 case 4:
                     System.out.println("Voltando...");
@@ -246,7 +248,7 @@ public class Main {
      * @version 1.0
      * @since 2025-05-12
     */   
-    static int pontuacao = 0;
+    static int pontuacao = 100;
     
     public static void calculoPontuacao() {
         int resultado = pontuacao * vida;
@@ -330,6 +332,119 @@ public class Main {
             new Question("Qual das seguintes declarações está correta para uma variável de caractere único?", new String[]{"char letra = a;", "char letra = 'a';", "char letra = a;"}, 1),
             new Question("Qual dessas variáveis é considerada uma variável de instância (não local)?", new String[]{"Uma variável declarada dentro de um método", "Uma variável declarada fora de métodos, dentro da classe", "Uma variável usada como argumento de função"}, 1),
             new Question("Qual nome de variável é inválido em Java?", new String[]{"_nomeUsuario", "2valor", "total_soma"}, 1)
+        );
+
+        // Embaralha a ordem das perguntas para que a sequência seja diferente a cada execução
+        Collections.shuffle(allQuestions);
+
+        int questionIndex = 0; // Índice da pergunta atual (quantas já foram respondidas corretamente)
+
+        // Enquanto o usuário não tiver acertado o numero de perguntas declarado aqui
+        while (questionIndex < 5) {
+            // Obtém a próxima pergunta da lista (baseada no índice atual)
+            Question q = allQuestions.get(questionIndex);
+
+            // Chama o método ask() da pergunta, que exibe a pergunta e retorna se a resposta foi correta
+            boolean correct = q.ask(scanner);
+
+            // Se a resposta estiver correta, avança para a próxima pergunta
+            if (correct) {
+                System.out.println("Correto!");
+                System.out.println("=========================");
+                vidaPersonagem();
+                questionIndex++; // Avança para a próxima pergunta
+                pontuacao += 50; // Aumenta a pontuação por acerto
+            } else {
+                // Se a resposta estiver errada, não avança — a mesma pergunta será repetida e tira uma vida
+                System.out.println("Errado! Tente novamente.");
+                System.out.println("=========================");
+                vida--;
+                vidaPersonagem();
+            } 
+        }
+        // Quando todas as 10 perguntas forem respondidas corretamente, o jogo termina
+        System.out.println("\nParabéns! Você completou o quiz.");
+        
+        tabelaFinal();
+    }
+        /**
+     * printa as perguntas do modo Normal do jogo
+     * @author Diego Sarti
+     * @version 1.0
+     * @since 2025-05-13
+    */
+    public static void nivelNormal() {
+        Scanner scanner = new Scanner(System.in); // Cria um objeto Scanner para ler a entrada do teclado
+
+        // Cria uma lista de perguntas com alternativas e a resposta correta
+        List<Question> allQuestions = Arrays.asList(
+            new Question("O que o operador '==' faz em Java ao comparar variáveis primitivas?", new String[]{"Compara se os valores são iguais", "Compara se os objetos são iguais", "Atribui um valor a uma variável"}, 0),
+            new Question("Qual é o resultado da expressão: 10 + 5 * 2?", new String[]{"30", "20", "40"}, 1), // 10 + (5*2) = 20
+            new Question("Qual é o escopo de uma variável declarada dentro de um método em Java?", new String[]{"Global", "De classe", "Local"}, 2),
+            new Question("Qual das opções representa corretamente um bloco condicional 'if' em Java?", new String[]{"if x > 10: {}", "if (x > 10) {}", "if x > 10 then {}"}, 1),
+            new Question("Qual destas estruturas é usada para repetir um bloco de código enquanto uma condição for verdadeira?", new String[]{"if", "while", "switch"}, 1),
+            new Question("Como se chama o processo de transformar código-fonte Java em bytecode?", new String[]{"Execução", "Compilação", "Instanciação"}, 1),
+            new Question("Qual é o valor da variável 'resultado' após: int resultado = 5; resultado += 3;", new String[]{"5", "8", "3"}, 1),
+            new Question("O que acontece se você usar um laço 'while(true)' sem uma condição de parada?", new String[]{"Erro de compilação", "O programa entra em loop infinito", "Executa apenas uma vez"}, 1),
+            new Question("Qual é a principal diferença entre '==' e 'equals()' ao comparar objetos em Java?", new String[]{"'==' compara conteúdo e 'equals()' compara referência", "'==' compara referência e 'equals()' compara conteúdo", "Ambos fazem a mesma coisa"}, 1),
+            new Question("Qual é a saída do código: int a = 3; int b = 2; System.out.println(a > b && b < 5);", new String[]{"true", "false", "Erro de compilação"}, 0)
+        );
+
+        // Embaralha a ordem das perguntas para que a sequência seja diferente a cada execução
+        Collections.shuffle(allQuestions);
+
+        int questionIndex = 0; // Índice da pergunta atual (quantas já foram respondidas corretamente)
+
+        // Enquanto o usuário não tiver acertado o numero de perguntas declarado aqui
+        while (questionIndex < 5) {
+            // Obtém a próxima pergunta da lista (baseada no índice atual)
+            Question q = allQuestions.get(questionIndex);
+
+            // Chama o método ask() da pergunta, que exibe a pergunta e retorna se a resposta foi correta
+            boolean correct = q.ask(scanner);
+
+            // Se a resposta estiver correta, avança para a próxima pergunta
+            if (correct) {
+                System.out.println("Correto!");
+                System.out.println("=========================");
+                vidaPersonagem();
+                questionIndex++; // Avança para a próxima pergunta
+                pontuacao += 50; // Aumenta a pontuação por acerto
+            } else {
+                // Se a resposta estiver errada, não avança — a mesma pergunta será repetida e tira uma vida
+                System.out.println("Errado! Tente novamente.");
+                System.out.println("=========================");
+                vida--;
+                vidaPersonagem();
+            } 
+        }
+        // Quando todas as 10 perguntas forem respondidas corretamente, o jogo termina
+        System.out.println("\nParabéns! Você completou o quiz.");
+        
+        tabelaFinal();
+    }
+    
+    /**
+     * printa as perguntas do modo Dificil do jogo
+     * @author Diego Sarti
+     * @version 1.0
+     * @since 2025-05-13
+    */
+    public static void nivelDificil() {
+        Scanner scanner = new Scanner(System.in); // Cria um objeto Scanner para ler a entrada do teclado
+
+        // Cria uma lista de perguntas com alternativas e a resposta correta
+        List<Question> allQuestions = Arrays.asList(
+            new Question("Qual é a saída do código: for(int i = 0; i < 5; i+=2) { System.out.print(i + \" \"); }", new String[]{"0 2 4", "0 1 2 3 4", "1 3 5"}, 0),
+            new Question("O que o comando 'continue' faz dentro de um laço?", new String[]{"Termina o laço", "Ignora a iteração atual e continua com a próxima", "Sai completamente do método"}, 1),
+            new Question("Qual é a diferença entre 'while' e 'do-while'?", new String[]{"'while' executa ao menos uma vez; 'do-while' pode não executar", "'do-while' executa ao menos uma vez; 'while' pode não executar", "Nenhuma, ambos são iguais"}, 1),
+            new Question("Qual será a saída do código: int i = 10; while(i < 10) { System.out.print(i); i++; }", new String[]{"10", "Nada", "Erro de compilação"}, 1),
+            new Question("Como declarar um laço infinito usando 'for' corretamente?", new String[]{"for(;;)", "for(1;;1)", "for(int i=0; i<∞; i++)"}, 0),
+            new Question("Qual o erro do código: for(int i = 0; i < 5; i--) { System.out.println(i); }", new String[]{"Nenhum, é válido", "Loop infinito", "Erro de compilação"}, 1),
+            new Question("Em um 'for' aninhado, quantas vezes o bloco interno executa?\nfor(int i=0; i<3; i++)\n for(int j=0; j<2; j++)", new String[]{"3", "2", "6"}, 2),
+            new Question("Qual é a saída?\nint x = 1;\nwhile (x < 5) {\n  x++;\n  if(x == 3) continue;\n  System.out.print(x);\n}", new String[]{"2345", "245", "345"}, 1),
+            new Question("É possível usar 'break' dentro de um 'for' aninhado para sair de ambos os laços diretamente?", new String[]{"Sim, usando break duas vezes", "Não, só sai do laço mais interno", "Sim, sempre sai de todos os laços"}, 1),
+            new Question("O que acontece com a variável de controle após um 'break' dentro de um laço 'for'?", new String[]{"Ela continua sendo incrementada", "Ela para no valor atual", "Ela é zerada"}, 1)
         );
 
         // Embaralha a ordem das perguntas para que a sequência seja diferente a cada execução
