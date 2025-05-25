@@ -172,7 +172,7 @@ public class Main {
         "Lucas Soares Valerio dos Santos" + "\n" +
         "Nicolas Ferreira Souza");
         System.out.println( "\n" + 
-        "Queremos e ao Professor Takeo por nos proporcionar essa experiência.");
+        "Queremos agradecer e ao Professor Takeo por nos proporcionar essa experiência.");
         mostrarMenu();
     }
     
@@ -491,7 +491,7 @@ public class Main {
      * @version 1.0
      * @since 2025-04-29
     */
-    public static void main(String[] args) {
+     public static void main(String[] args) {
         mostrarMenu(); // Printa o Menu principal do jogo.
     }
 }
