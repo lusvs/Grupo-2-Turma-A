@@ -89,7 +89,8 @@ public class Main {
             System.out.println("1. Fácil");
             System.out.println("2. Normal");
             System.out.println("3. Dificil");
-            System.out.println("4. Voltar para o Menu");
+            System.out.println("4. Punitivo");
+            System.out.println("5. Voltar para o Menu");
             System.out.print("Escolha uma opção: ");
             int dificuldade = scanner.nextInt();
             
@@ -107,6 +108,10 @@ public class Main {
                     nivelDificil();
                     break;
                 case 4:
+                    nivelPunitivo();
+                    mostrarMenu();
+                    break;
+                case 5:
                     System.out.println("Voltando...");
                     mostrarMenu();
                     break;
@@ -432,6 +437,57 @@ public class Main {
      * @since 2025-05-13
     */
     public static void nivelDificil() {
+        Scanner scanner = new Scanner(System.in); // Cria um objeto Scanner para ler a entrada do teclado
+
+        // Cria uma lista de perguntas com alternativas e a resposta correta
+        List<Question> allQuestions = Arrays.asList(
+            new Question("Qual é a saída do código: for(int i = 0; i < 5; i+=2) { System.out.print(i + \" \"); }", new String[]{"0 2 4", "0 1 2 3 4", "1 3 5"}, 0),
+            new Question("O que o comando 'continue' faz dentro de um laço?", new String[]{"Termina o laço", "Ignora a iteração atual e continua com a próxima", "Sai completamente do método"}, 1),
+            new Question("Qual é a diferença entre 'while' e 'do-while'?", new String[]{"'while' executa ao menos uma vez; 'do-while' pode não executar", "'do-while' executa ao menos uma vez; 'while' pode não executar", "Nenhuma, ambos são iguais"}, 1),
+            new Question("Qual será a saída do código: int i = 10; while(i < 10) { System.out.print(i); i++; }", new String[]{"10", "Nada", "Erro de compilação"}, 1),
+            new Question("Como declarar um laço infinito usando 'for' corretamente?", new String[]{"for(;;)", "for(1;;1)", "for(int i=0; i<∞; i++)"}, 0),
+            new Question("Qual o erro do código: for(int i = 0; i < 5; i--) { System.out.println(i); }", new String[]{"Nenhum, é válido", "Loop infinito", "Erro de compilação"}, 1),
+            new Question("Em um 'for' aninhado, quantas vezes o bloco interno executa?\nfor(int i=0; i<3; i++)\n for(int j=0; j<2; j++)", new String[]{"3", "2", "6"}, 2),
+            new Question("Qual é a saída?\nint x = 1;\nwhile (x < 5) {\n  x++;\n  if(x == 3) continue;\n  System.out.print(x);\n}", new String[]{"2345", "245", "345"}, 1),
+            new Question("É possível usar 'break' dentro de um 'for' aninhado para sair de ambos os laços diretamente?", new String[]{"Sim, usando break duas vezes", "Não, só sai do laço mais interno", "Sim, sempre sai de todos os laços"}, 1),
+            new Question("O que acontece com a variável de controle após um 'break' dentro de um laço 'for'?", new String[]{"Ela continua sendo incrementada", "Ela para no valor atual", "Ela é zerada"}, 1)
+        );
+
+        // Embaralha a ordem das perguntas para que a sequência seja diferente a cada execução
+        Collections.shuffle(allQuestions);
+
+        int questionIndex = 0; // Índice da pergunta atual (quantas já foram respondidas corretamente)
+
+        // Enquanto o usuário não tiver acertado o numero de perguntas declarado aqui
+        while (questionIndex < 5) {
+            // Obtém a próxima pergunta da lista (baseada no índice atual)
+            Question q = allQuestions.get(questionIndex);
+
+            // Chama o método ask() da pergunta, que exibe a pergunta e retorna se a resposta foi correta
+            boolean correct = q.ask(scanner);
+
+            // Se a resposta estiver correta, avança para a próxima pergunta
+            if (correct) {
+                System.out.println("Correto!");
+                System.out.println("=========================");
+                vidaPersonagem();
+                questionIndex++; // Avança para a próxima pergunta
+                pontuacao += 50; // Aumenta a pontuação por acerto
+            } else {
+                // Se a resposta estiver errada, não avança — a mesma pergunta será repetida e tira uma vida
+                System.out.println("Errado! Tente novamente.");
+                System.out.println("=========================");
+                vida--;
+                vidaPersonagem();
+            } 
+        }
+        // Quando todas as 10 perguntas forem respondidas corretamente, o jogo termina
+        System.out.println("\nParabéns! Você completou o quiz.");
+        
+        tabelaFinal();
+    }
+
+    public static void nivelPunitivo() {
         Scanner scanner = new Scanner(System.in); // Cria um objeto Scanner para ler a entrada do teclado
 
         // Cria uma lista de perguntas com alternativas e a resposta correta
