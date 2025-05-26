@@ -36,6 +36,17 @@ Diego Sarti
 criação do nivelDificil - 13/05/2025
 Diego Sarti
 
+Criação do nivelPunitivo() - 26/05/2025
+Diego Sarti
+
+apresentarIntroducaoPunitivo - 26/05/2025
+Diego Sarti
+
+tabelaFinalPunitivo
+
+calculoPontuacaoPunitivo
+
+
 *******************************************************************************/
 import java.util.*;
 public class Main {
@@ -108,8 +119,8 @@ public class Main {
                     nivelDificil();
                     break;
                 case 4:
+                    apresentarIntroducaoPunitivo();
                     nivelPunitivo();
-                    mostrarMenu();
                     break;
                 case 5:
                     System.out.println("Voltando...");
@@ -229,6 +240,26 @@ public class Main {
         System.out.println("================================");
         vidaPersonagem();
     }// nickname + 
+
+    /**
+     * Apresenta a Introdução do jogo do modo punitivo.
+     * @author Diego Sarti
+     * @version 1.0
+     * @since 2025-05-05
+    */
+
+    public static void apresentarIntroducaoPunitivo() {
+        System.out.println("========== Introdução ==========");
+        
+        System.out.println("O ano é 2147, em um mundo digital distópico controlado por uma superinteligência conhecida como \"Mainframe\".");
+        System.out.println("Essa inteligência foi criada para organizar a programação de todas as máquinas e sistemas do mundo, mas algo deu errado.");
+        System.out.println("O Mainframe se corrompeu e agora governa uma cidade virtual fechada, onde os habitantes estão presos em um ciclo infinito, sem poder acessar o mundo exterior.");
+        System.out.println("\n" + "O último Programador é você " + ", uma pessoa que ainda possui conhecimento suficiente para modificar o código que mantém o Mainframe funcionando.");
+        System.out.println("Você foi capturado e aprisionado dentro de um servidor de dados, e sua missão é escapar e restaurar a liberdade, atacando as falhas no código do Mainframe.");
+        System.out.println("Para isso, você precisará aprender programação básica para reprogramar o sistema e abrir as portas para a liberdade.");
+        System.out.println("================================");
+        vidaPersonagemPunitivo();
+    }// nickname + 
     
     /**
      * Mostra a vida do jogador.
@@ -246,7 +277,23 @@ public class Main {
             tabelaFinal();
         }
     }
+    /**
+     * Mostra a vida do jogador no modo punitivo.
+     * @author Diego SArti
+     * @version 1.0
+     * @since 2025-05-07
+    */
 
+    static int vidaPunitivo = 1;
+
+    public static void vidaPersonagemPunitivo() {
+        System.out.println("❤️ : " + vidaPunitivo);
+        if(vidaPunitivo < 1){
+            System.out.println("GAME OVER");
+            // mostrarPontuação();
+            tabelaFinalPunitivo();
+        }
+    }
 
       /**
      * Pontuação do jogo
@@ -259,7 +306,19 @@ public class Main {
     public static void calculoPontuacao() {
         int resultado = pontuacao * vida;
         System.out.println("Sua pontuação base foi: " + pontuacao);
-        System.out.println("Multiplicador de vida (x" + vida + ")");
+        System.out.println("Multiplicador de vida (x" + vidaPunitivo + ")");
+        System.out.println("Pontuação final: " + resultado);
+    }
+    /**
+     * Pontuação do jogo modo punitivo
+     * @author Diego Sarti
+     * @version 1.0
+     * @since 2025-05-12
+    */   
+    public static void calculoPontuacaoPunitivo() {
+        int resultado = pontuacao * vidaPunitivo;
+        System.out.println("Sua pontuação base foi: " + pontuacao);
+        System.out.println("Multiplicador de vida (x" + vidaPunitivo + ")");
         System.out.println("Pontuação final: " + resultado);
     }
     
@@ -275,6 +334,20 @@ public class Main {
         // System.out.println("Sua pontuação final foi: " + resultado);
         System.out.println("Quantidade de vidas: " + vida);
         calculoPontuacao();
+        mostrarMenu();
+    }
+     /**
+     * Mostra tabela final do jogo no modo punitivo
+     * @author Diego Sarti
+     * @version 1.0
+     * @since 2025-05-12
+    */   
+
+    public static void tabelaFinalPunitivo() {
+        System.out.println("========== Tabela Final ==========");
+        // System.out.println("Sua pontuação final foi: " + resultado);
+        System.out.println("Quantidade de vidas: " + vidaPunitivo);
+        calculoPontuacaoPunitivo();
         mostrarMenu();
     }
 
@@ -487,6 +560,13 @@ public class Main {
         tabelaFinal();
     }
 
+     /**
+     * printa as perguntas do modo Punitivo do jogo
+     * @author Diego Sarti
+     * @version 1.0
+     * @since 2025-05-13
+    */
+
     public static void nivelPunitivo() {
         Scanner scanner = new Scanner(System.in); // Cria um objeto Scanner para ler a entrada do teclado
 
@@ -521,21 +601,21 @@ public class Main {
             if (correct) {
                 System.out.println("Correto!");
                 System.out.println("=========================");
-                vidaPersonagem();
+                vidaPersonagemPunitivo();
                 questionIndex++; // Avança para a próxima pergunta
                 pontuacao += 50; // Aumenta a pontuação por acerto
             } else {
                 // Se a resposta estiver errada, não avança — a mesma pergunta será repetida e tira uma vida
                 System.out.println("Errado! Tente novamente.");
                 System.out.println("=========================");
-                vida--;
-                vidaPersonagem();
+                vidaPunitivo--;
+                vidaPersonagemPunitivo();
             } 
         }
         // Quando todas as 10 perguntas forem respondidas corretamente, o jogo termina
         System.out.println("\nParabéns! Você completou o quiz.");
         
-        tabelaFinal();
+        tabelaFinalPunitivo();
     }
     
     
