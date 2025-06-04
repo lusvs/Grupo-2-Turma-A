@@ -367,7 +367,7 @@ public class Main {
         int questionIndex = 0; // Índice da pergunta atual (quantas já foram respondidas corretamente)
 
         // Enquanto o usuário não tiver acertado o numero de perguntas declarado aqui
-        while (questionIndex < 2) {
+        while (questionIndex < 5 && vida > 0) {
             // Obtém a próxima pergunta da lista (baseada no índice atual)
             Question q = allQuestions.get(questionIndex);
 
@@ -423,7 +423,7 @@ public class Main {
         int questionIndex = 0; // Índice da pergunta atual (quantas já foram respondidas corretamente)
 
         // Enquanto o usuário não tiver acertado o numero de perguntas declarado aqui
-        while (questionIndex < 5) {
+        while (questionIndex < 5 && vida > 0) {
             // Obtém a próxima pergunta da lista (baseada no índice atual)
             Question q = allQuestions.get(questionIndex);
 
@@ -479,7 +479,7 @@ public class Main {
         int questionIndex = 0; // Índice da pergunta atual (quantas já foram respondidas corretamente)
 
         // Enquanto o usuário não tiver acertado o numero de perguntas declarado aqui
-        while (questionIndex < 5) {
+        while (questionIndex < 5 && vida > 0) {
             // Obtém a próxima pergunta da lista (baseada no índice atual)
             Question q = allQuestions.get(questionIndex);
 
