@@ -535,7 +535,7 @@ public class Main {
         int questionIndex = 0; // Índice da pergunta atual (quantas já foram respondidas corretamente)
 
         // Enquanto o usuário não tiver acertado o numero de perguntas declarado aqui
-        while (questionIndex < 1) {
+        while (questionIndex < 5) {
             // Obtém a próxima pergunta da lista (baseada no índice atual)
             Question q = allQuestions.get(questionIndex);
 
@@ -551,13 +551,15 @@ public class Main {
                 pontuacao += 50; // Aumenta a pontuação por acerto
             } else {
                 // Se a resposta estiver errada, não avança — a mesma pergunta será repetida e tira uma vida
-                System.out.println("Errado! Tente novamente.");
                 System.out.println("=========================");
                 vidaPunitivo--;
-                // vidaPersonagemPunitivo();
+                if(vidaPunitivo < 1) {
+                    tabelaFinalPunitivo();
+                    System.exit(0);
+                }
             } 
         }
-        // Quando todas as 10 perguntas forem respondidas corretamente, o jogo termina
+        // Quando todas as 10 perguntas forem1 respondidas corretamente, o jogo termina
         // System.out.println("\nParabéns! Você completou o quiz.");
         tabelaFinalPunitivo();
     }
@@ -619,10 +621,10 @@ public class Main {
  */   
     public static void tabelaFinalPunitivo() {
         // Chama o método para calcular a pontuação
-        calculoPontuacao();
+        calculoPontuacaoPunitivo();
     
         System.out.println("========== Tabela Final ==========");
-        if (vida == 0)
+        if (vidaPunitivo == 0)
             System.out.println("GAME OVER, tente novamente," + nome + "!!");
         else
             System.out.println("Parabens por concluir o jogo, " + nome + "!!");
