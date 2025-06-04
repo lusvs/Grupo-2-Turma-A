@@ -189,7 +189,7 @@ public class Main {
         "Lucas Soares Valerio dos Santos" + "\n" +
         "Nicolas Ferreira Souza");
         System.out.println( "\n" + 
-        "Queremos agradecer e ao Professor Takeo por nos proporcionar essa experiência.");
+        "Queremos agradecer ao Professor Takeo por nos proporcionar essa experiência.");
         mostrarMenu();
     }
     
@@ -587,7 +587,10 @@ public class Main {
         calculoPontuacao();
     
         System.out.println("========== Tabela Final ==========");
-        System.out.println("Parabens por concluir o jogo, " + nome + "!!");
+        if (vida == 0)
+            System.out.println("GAME OVER, tente novamente," + nome + "!!");
+        else
+            System.out.println("Parabens por concluir o jogo, " + nome + "!!");
         System.out.println("Quantidade de vidas: " + vida);
         System.out.println("Pontos feitos: " + pontuacao);
         System.out.println("Pontos ganhos pelas vidas: " + (pontuacao * vida)); // Exibe os pontos pelas vidas
@@ -619,7 +622,10 @@ public class Main {
         calculoPontuacao();
     
         System.out.println("========== Tabela Final ==========");
-        System.out.println("Parabens por concluir o jogo, " + nome + "!!");
+        if (vida == 0)
+            System.out.println("GAME OVER, tente novamente," + nome + "!!");
+        else
+            System.out.println("Parabens por concluir o jogo, " + nome + "!!");
         System.out.println("Quantidade de vidas: " + vidaPunitivo);
         System.out.println("Pontos feitos: " + pontuacaoPunitivo);
         System.out.println("Pontos ganhos pelas vidas: " + (pontuacaoPunitivo * vidaPunitivo)); // Exibe os pontos pelas vidas
