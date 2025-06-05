@@ -51,6 +51,8 @@ Diego Sarti
 logicaQuestoes - 04/06/2025
 Lucas Soares
 
+trocarPontos - 04/06/2025
+Lucas Soares
 *******************************************************************************/
 import java.util.*;
 public class Main {
@@ -411,17 +413,17 @@ public static void nivelDificil() {
     logicaQuestoes(allQuestions, scanner); // <-- CORRIGIDO
 }
 
-    /**
-     * Roda a logica das questoes.
-     * @author Lucas Soares
-     * @version 1.0
-     * @since 2025-06-04
-    */
+/**
+* Roda a logica das questoes.
+* @author Lucas Soares
+* @version 1.0
+* @since 2025-06-04
+*/
 public static void logicaQuestoes(List<Question> questions, Scanner scanner) {
     int questionIndex = 0; // Índice da pergunta atual (quantas já foram respondidas corretamente)
 
     // Enquanto o usuário não tiver acertado o numero de perguntas declarado aqui
-    while (questionIndex < 5 && vida > 0) {
+    while (questionIndex < 10 && vida > 0) {
         // Obtém a próxima pergunta da lista (baseada no índice atual)
         Question q = questions.get(questionIndex); // <-- USE "questions", não "allQuestions"
 
@@ -434,6 +436,8 @@ public static void logicaQuestoes(List<Question> questions, Scanner scanner) {
             vidaPersonagem();
             questionIndex++; // Avança para a próxima pergunta
             pontuacao += 100; // Aumenta a pontuação por acerto
+            if (questionIndex == 5)
+                trocarPontos();
         } else {
             System.out.println("Errado! Tente novamente.");
             System.out.println("=========================");
@@ -443,6 +447,35 @@ public static void logicaQuestoes(List<Question> questions, Scanner scanner) {
     }
 
     tabelaFinal();
+}
+
+/**
+* troca os pontos por vidas.
+* @author Lucas Soares
+* @version 1.0
+* @since 2025-06-04
+*/
+public static void trocarPontos() {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("=========================");
+    System.out.println("PARABENS, você chegou na metade do caminho!");
+    System.out.println("Deseja trocar alguns dos seus pontos por vidas? [s/n]");
+    vidaPersonagem();
+    System.out.println("Pontos: " + pontuacao);
+    char confirmaTroca =  scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minuscula
+        
+        switch(confirmaTroca){
+            case 's': // Vai definir o nome do jogador
+                System.out.println("trocar");
+                break;
+            case 'n': // Vai fazer a pergunta do nome novamente
+                System.out.println("NÃO trocar");
+                break;
+            default: // Vai fazer a pergunta do nome novamente
+                System.out.println("Opção inválida! Tente novamente.");
+                trocarPontos();
+        }
+    
 }
 
 /**
