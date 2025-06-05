@@ -421,7 +421,7 @@ public static void logicaQuestoes(List<Question> questions, Scanner scanner) {
     int questionIndex = 0; // Índice da pergunta atual (quantas já foram respondidas corretamente)
 
     // Enquanto o usuário não tiver acertado o numero de perguntas declarado aqui
-    while (questionIndex < 1 && vida > 0) {
+    while (questionIndex < 5 && vida > 0) {
         // Obtém a próxima pergunta da lista (baseada no índice atual)
         Question q = questions.get(questionIndex); // <-- USE "questions", não "allQuestions"
 
@@ -474,7 +474,7 @@ public static void logicaQuestoes(List<Question> questions, Scanner scanner) {
         int questionIndex = 0; // Índice da pergunta atual (quantas já foram respondidas corretamente)
 
         // Enquanto o usuário não tiver acertado o numero de perguntas declarado aqui
-        while (questionIndex < 1 && vida > 0){
+        while (questionIndex < 10 && vida > 0){
             // Obtém a próxima pergunta da lista (baseada no índice atual)
             Question q = allQuestions.get(questionIndex);
 
