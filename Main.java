@@ -245,8 +245,6 @@ public class Main {
         System.out.println("Você foi capturado e aprisionado dentro de um servidor de dados, e sua missão é escapar e restaurar a liberdade, atacando as falhas no código do Mainframe.");
         System.out.println("Para isso, você precisará aprender programação básica para reprogramar o sistema e abrir as portas para a liberdade.");
         System.out.println("================================");
-        vidaPersonagem();
-        System.out.println("Pontos: " + pontuacao);
     }// nickname + 
 
     /**
@@ -266,9 +264,7 @@ public class Main {
         System.out.println("Você foi capturado e aprisionado dentro de um servidor de dados, e sua missão é escapar e restaurar a liberdade, atacando as falhas no código do Mainframe.");
         System.out.println("Para isso, você precisará aprender programação básica para reprogramar o sistema e abrir as portas para a liberdade.");
         System.out.println("================================");
-        vidaPersonagemPunitivo();
-        System.out.println("Pontos: " + pontuacao);
-    }// nickname + 
+    } 
     
     /**
      * Mostra a vida do jogador.
@@ -426,8 +422,12 @@ public static void logicaQuestoes(List<Question> questions, Scanner scanner) {
 
     // Enquanto o usuário não tiver acertado o numero de perguntas declarado aqui
     while (questionIndex < 10 && vida > 0) {
+        
+        vidaPersonagem();
+        System.out.println("Pontos: " + pontuacao);
+        
         // Obtém a próxima pergunta da lista (baseada no índice atual)
-        Question q = questions.get(questionIndex); // <-- USE "questions", não "allQuestions"
+        Question q = questions.get(questionIndex);
 
         // Chama o método ask() da pergunta, que exibe a pergunta e retorna se a resposta foi correta
         boolean correct = q.ask(scanner);
@@ -437,8 +437,6 @@ public static void logicaQuestoes(List<Question> questions, Scanner scanner) {
             System.out.println("=========================");
             questionIndex++; // Avança para a próxima pergunta
             pontuacao += 100; // AUMENTA a pontuação por ACERTO
-            vidaPersonagem();
-            System.out.println("Pontos: " + pontuacao);
             if (questionIndex == 5)
                 trocarPontos();
         } else {
@@ -447,8 +445,6 @@ public static void logicaQuestoes(List<Question> questions, Scanner scanner) {
             vida--;
             if (pontuacao > 0)
                 pontuacao -= 50; // DIMINUI a pontuação por ERRO
-            vidaPersonagem();
-            System.out.println("Pontos: " + pontuacao);
         }
     }
     tabelaFinal();
@@ -462,13 +458,13 @@ public static void logicaQuestoes(List<Question> questions, Scanner scanner) {
 */
 public static void trocarPontos() {
     Scanner scanner = new Scanner(System.in);
-    // System.out.println("============ Mercado de Vidas =============");
+    System.out.println("============ Mercado de Vidas =============");
+    vidaPersonagem();
+    System.out.println("Pontos: " + pontuacao);
     System.out.println("PARABENS, você chegou na metade do caminho!");
     if (vida < 3) {
         System.out.println("Você deseja trocar pontos para recuperar vida? [s/n]");
         System.out.println("***1 vida custa 100 pontos***");
-        // vidaPersonagem();
-        // System.out.println("Pontos: " + pontuacao);
         char confirmaTroca =  scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minuscula
         
             switch(confirmaTroca){
@@ -478,8 +474,6 @@ public static void trocarPontos() {
                         pontuacao -= 100; // DIMINUI a pontuação
                         System.out.println("troca realizada!");
                         System.out.println("=========================");
-                        vidaPersonagem();
-                        System.out.println("Pontos: " + pontuacao);
                     }else {
                         System.out.println("quantas vidas você deseja comprar? [1/2]");
                         char quantidadeVidasCompradas =  scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minuscula.
@@ -490,8 +484,6 @@ public static void trocarPontos() {
                                 pontuacao -= 100; // DIMINUI a pontuação
                                 System.out.println("troca realizada!");
                                 System.out.println("=========================");
-                                vidaPersonagem();
-                                System.out.println("Pontos: " + pontuacao);
                             break;
                             case '2':
                                 vida++; // AUMENTA a VIDA
@@ -499,8 +491,6 @@ public static void trocarPontos() {
                                 pontuacao -= 200; // DIMINUI a pontuação
                                 System.out.println("troca realizada!");
                                 System.out.println("=========================");
-                                vidaPersonagem();
-                                System.out.println("Pontos: " + pontuacao);
                             break;
                             default: // Vai fazer a pergunta novamente
                             System.out.println("Opção inválida! Tente novamente.");
@@ -519,8 +509,6 @@ public static void trocarPontos() {
     } else {
         System.out.println("Você já tem vidas o suficiente\nContinue assim, você está indo bem!!");
         System.out.println("=========================");
-        vidaPersonagem();
-        System.out.println("Pontos: " + pontuacao);
     }
 }
 
@@ -553,7 +541,7 @@ public static void trocarPontos() {
         int questionIndex = 0; // Índice da pergunta atual (quantas já foram respondidas corretamente)
 
         // Enquanto o usuário não tiver acertado o numero de perguntas declarado aqui
-        while (questionIndex < 10 && vida > 0){
+        while (questionIndex < 10 || vida > 0){
             // Obtém a próxima pergunta da lista (baseada no índice atual)
             Question q = allQuestions.get(questionIndex);
 
