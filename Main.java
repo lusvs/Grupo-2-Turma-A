@@ -246,6 +246,7 @@ public class Main {
         System.out.println("Para isso, você precisará aprender programação básica para reprogramar o sistema e abrir as portas para a liberdade.");
         System.out.println("================================");
         vidaPersonagem();
+        System.out.println("Pontos: " + pontuacao);
     }// nickname + 
 
     /**
@@ -266,6 +267,7 @@ public class Main {
         System.out.println("Para isso, você precisará aprender programação básica para reprogramar o sistema e abrir as portas para a liberdade.");
         System.out.println("================================");
         vidaPersonagemPunitivo();
+        System.out.println("Pontos: " + pontuacao);
     }// nickname + 
     
     /**
@@ -433,19 +435,22 @@ public static void logicaQuestoes(List<Question> questions, Scanner scanner) {
         if (correct) {
             System.out.println("Correto!");
             System.out.println("=========================");
-            vidaPersonagem();
             questionIndex++; // Avança para a próxima pergunta
-            pontuacao += 100; // Aumenta a pontuação por acerto
+            pontuacao += 100; // AUMENTA a pontuação por ACERTO
+            vidaPersonagem();
+            System.out.println("Pontos: " + pontuacao);
             if (questionIndex == 5)
                 trocarPontos();
         } else {
             System.out.println("Errado! Tente novamente.");
             System.out.println("=========================");
             vida--;
+            if (pontuacao > 0)
+                pontuacao -= 50; // DIMINUI a pontuação por ERRO
             vidaPersonagem();
+            System.out.println("Pontos: " + pontuacao);
         }
     }
-
     tabelaFinal();
 }
 
@@ -457,22 +462,22 @@ public static void logicaQuestoes(List<Question> questions, Scanner scanner) {
 */
 public static void trocarPontos() {
     Scanner scanner = new Scanner(System.in);
-    System.out.println("============ Mercado de Vidas =============");
+    // System.out.println("============ Mercado de Vidas =============");
     System.out.println("PARABENS, você chegou na metade do caminho!");
     if (vida < 3) {
         System.out.println("Você deseja trocar pontos para recuperar vida? [s/n]");
         System.out.println("***1 vida custa 100 pontos***");
-        vidaPersonagem();
-        System.out.println("Pontos: " + pontuacao);
+        // vidaPersonagem();
+        // System.out.println("Pontos: " + pontuacao);
         char confirmaTroca =  scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minuscula
         
             switch(confirmaTroca){
                 case 's': 
                     if (vida == 2) {
-                        vida++;
-                        pontuacao -= 100;
+                        vida++; // AUMENTA a VIDA
+                        pontuacao -= 100; // DIMINUI a pontuação
                         System.out.println("troca realizada!");
-                        System.out.println("===========================================");
+                        System.out.println("=========================");
                         vidaPersonagem();
                         System.out.println("Pontos: " + pontuacao);
                     }else {
@@ -481,39 +486,39 @@ public static void trocarPontos() {
                         
                         switch(quantidadeVidasCompradas){
                             case '1':
-                                vida++;
-                                pontuacao -= 100;
+                                vida++; // AUMENTA a VIDA
+                                pontuacao -= 100; // DIMINUI a pontuação
                                 System.out.println("troca realizada!");
-                                System.out.println("===========================================");
+                                System.out.println("=========================");
                                 vidaPersonagem();
                                 System.out.println("Pontos: " + pontuacao);
                             break;
                             case '2':
-                                vida++;
-                                vida++;
-                                pontuacao -= 200;
+                                vida++; // AUMENTA a VIDA
+                                vida++; 
+                                pontuacao -= 200; // DIMINUI a pontuação
                                 System.out.println("troca realizada!");
-                                System.out.println("===========================================");
+                                System.out.println("=========================");
                                 vidaPersonagem();
                                 System.out.println("Pontos: " + pontuacao);
                             break;
-                            default: // Vai fazer a pergunta do nome novamente
+                            default: // Vai fazer a pergunta novamente
                             System.out.println("Opção inválida! Tente novamente.");
                             trocarPontos();
                         }
                     }    
                 break;
-                case 'n': // Vai fazer a pergunta do nome novamente
+                case 'n': // Vai voltar a rodar as perguntas
                     System.out.println("Tudo bem, boa sorte no resto da jornada!!");
-                    System.out.println("===========================================");
+                    System.out.println("=========================");
                 break;
-                default: // Vai fazer a pergunta do nome novamente
+                default: // Vai fazer a pergunta novamente
                     System.out.println("Opção inválida! Tente novamente.");
                     trocarPontos();
         }
     } else {
         System.out.println("Você já tem vidas o suficiente\nContinue assim, você está indo bem!!");
-        System.out.println("===========================================");
+        System.out.println("=========================");
         vidaPersonagem();
         System.out.println("Pontos: " + pontuacao);
     }
