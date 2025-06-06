@@ -457,25 +457,66 @@ public static void logicaQuestoes(List<Question> questions, Scanner scanner) {
 */
 public static void trocarPontos() {
     Scanner scanner = new Scanner(System.in);
-    System.out.println("=========================");
+    System.out.println("============ Mercado de Vidas =============");
     System.out.println("PARABENS, você chegou na metade do caminho!");
-    System.out.println("Deseja trocar alguns dos seus pontos por vidas? [s/n]");
-    vidaPersonagem();
-    System.out.println("Pontos: " + pontuacao);
-    char confirmaTroca =  scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minuscula
+    if (vida < 3) {
+        System.out.println("Você deseja trocar pontos para recuperar vida? [s/n]");
+        System.out.println("***1 vida custa 100 pontos***");
+        vidaPersonagem();
+        System.out.println("Pontos: " + pontuacao);
+        char confirmaTroca =  scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minuscula
         
-        switch(confirmaTroca){
-            case 's': // Vai definir o nome do jogador
-                System.out.println("trocar");
+            switch(confirmaTroca){
+                case 's': 
+                    if (vida == 2) {
+                        vida++;
+                        pontuacao -= 100;
+                        System.out.println("troca realizada!");
+                        System.out.println("===========================================");
+                        vidaPersonagem();
+                        System.out.println("Pontos: " + pontuacao);
+                    }else {
+                        System.out.println("quantas vidas você deseja comprar? [1/2]");
+                        char quantidadeVidasCompradas =  scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minuscula.
+                        
+                        switch(quantidadeVidasCompradas){
+                            case '1':
+                                vida++;
+                                pontuacao -= 100;
+                                System.out.println("troca realizada!");
+                                System.out.println("===========================================");
+                                vidaPersonagem();
+                                System.out.println("Pontos: " + pontuacao);
+                            break;
+                            case '2':
+                                vida++;
+                                vida++;
+                                pontuacao -= 200;
+                                System.out.println("troca realizada!");
+                                System.out.println("===========================================");
+                                vidaPersonagem();
+                                System.out.println("Pontos: " + pontuacao);
+                            break;
+                            default: // Vai fazer a pergunta do nome novamente
+                            System.out.println("Opção inválida! Tente novamente.");
+                            trocarPontos();
+                        }
+                    }    
                 break;
-            case 'n': // Vai fazer a pergunta do nome novamente
-                System.out.println("NÃO trocar");
+                case 'n': // Vai fazer a pergunta do nome novamente
+                    System.out.println("Tudo bem, boa sorte no resto da jornada!!");
+                    System.out.println("===========================================");
                 break;
-            default: // Vai fazer a pergunta do nome novamente
-                System.out.println("Opção inválida! Tente novamente.");
-                trocarPontos();
+                default: // Vai fazer a pergunta do nome novamente
+                    System.out.println("Opção inválida! Tente novamente.");
+                    trocarPontos();
         }
-    
+    } else {
+        System.out.println("Você já tem vidas o suficiente\nContinue assim, você está indo bem!!");
+        System.out.println("===========================================");
+        vidaPersonagem();
+        System.out.println("Pontos: " + pontuacao);
+    }
 }
 
 /**
