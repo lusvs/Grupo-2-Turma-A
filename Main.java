@@ -241,7 +241,7 @@ public class Main {
         System.out.println("\n" + "O último Programador é você " + nome + ", uma pessoa que ainda possui conhecimento suficiente para modificar o código que mantém o Mainframe funcionando.");
         System.out.println("Você foi capturado e aprisionado dentro de um servidor de dados, e sua missão é escapar e restaurar a liberdade, atacando as falhas no código do Mainframe.");
         System.out.println("Para isso, você precisará aprender programação básica para reprogramar o sistema e abrir as portas para a liberdade.");
-        System.out.println("================================");
+       
     }
     
     /**
@@ -401,6 +401,7 @@ public static void logicaQuestoes(List<Question> questions, Scanner scanner) {
     // Enquanto o usuário não tiver acertado o numero de perguntas declarado aqui
     while (questionIndex < 10 && vida > 0) {
         
+        System.out.println("=========================");
         vidaPersonagem();
         System.out.println("Pontos: " + pontuacao);
         
@@ -412,14 +413,12 @@ public static void logicaQuestoes(List<Question> questions, Scanner scanner) {
 
         if (correct) {
             System.out.println("Correto!");
-            System.out.println("=========================");
             questionIndex++; // Avança para a próxima pergunta
             pontuacao += 100; // AUMENTA a pontuação por ACERTO
             if (questionIndex == 5)
                 trocarPontos();
         } else {
             System.out.println("Errado! Tente novamente.");
-            System.out.println("=========================");
             vida--;
             if (pontuacao > 0)
                 pontuacao -= 50; // DIMINUI a pontuação por ERRO
@@ -451,9 +450,6 @@ public static void trocarPontos() {
                         vida++; // AUMENTA a VIDA
                         pontuacao -= 100; // DIMINUI a pontuação
                         System.out.println("troca realizada!");
-                        System.out.println("=========================");
-                        // vidaPersonagem();
-                        // System.out.println("Pontos: " + pontuacao);
                     }else {
                         System.out.println("quantas vidas você deseja comprar? [1/2]");
                         char quantidadeVidasCompradas =  scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minuscula.
@@ -463,18 +459,12 @@ public static void trocarPontos() {
                                 vida++; // AUMENTA a VIDA
                                 pontuacao -= 100; // DIMINUI a pontuação
                                 System.out.println("troca realizada!");
-                                System.out.println("=========================");
-                                // vidaPersonagem();
-                                // System.out.println("Pontos: " + pontuacao);
                             break;
                             case '2':
                                 vida++; // AUMENTA a VIDA
                                 vida++; 
                                 pontuacao -= 200; // DIMINUI a pontuação
                                 System.out.println("troca realizada!");
-                                System.out.println("=========================");
-                                // vidaPersonagem();
-                                // System.out.println("Pontos: " + pontuacao);
                             break;
                             default: // Vai fazer a pergunta novamente
                             System.out.println("Opção inválida! Tente novamente.");
@@ -484,7 +474,6 @@ public static void trocarPontos() {
                 break;
                 case 'n': // Vai voltar a rodar as perguntas
                     System.out.println("Tudo bem, boa sorte no resto da jornada!!");
-                    System.out.println("=========================");
                 break;
                 default: // Vai fazer a pergunta novamente
                     System.out.println("Opção inválida! Tente novamente.");
@@ -492,7 +481,6 @@ public static void trocarPontos() {
         }
     } else {
         System.out.println("Você já tem vidas o suficiente\nContinue assim, você está indo bem!!");
-        System.out.println("=========================");
     }
 }
 
