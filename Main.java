@@ -39,9 +39,6 @@ Diego Sarti
 Criação do nivelPunitivo - 26/05/2025
 Diego Sarti
 
-apresentarIntroducaoPunitivo - 26/05/2025
-Diego Sarti
-
 tabelaFinalPunitivo - 26/05/2025
 Diego Sarti
 
@@ -125,7 +122,7 @@ public class Main {
                     nivelDificil();
                     break;
                 case 4:
-                    apresentarIntroducaoPunitivo();
+                    apresentarIntroducao();
                     nivelPunitivo();
                     break;
                 case 5:
@@ -241,30 +238,11 @@ public class Main {
         System.out.println("O ano é 2147, em um mundo digital distópico controlado por uma superinteligência conhecida como \"Mainframe\".");
         System.out.println("Essa inteligência foi criada para organizar a programação de todas as máquinas e sistemas do mundo, mas algo deu errado.");
         System.out.println("O Mainframe se corrompeu e agora governa uma cidade virtual fechada, onde os habitantes estão presos em um ciclo infinito, sem poder acessar o mundo exterior.");
-        System.out.println("\n" + "O último Programador é você " + ", uma pessoa que ainda possui conhecimento suficiente para modificar o código que mantém o Mainframe funcionando.");
-        System.out.println("Você foi capturado e aprisionado dentro de um servidor de dados, e sua missão é escapar e restaurar a liberdade, atacando as falhas no código do Mainframe.");
-        System.out.println("Para isso, você precisará aprender programação básica para reprogramar o sistema e abrir as portas para a liberdade.");
-        System.out.println("================================");
-    }// nickname + 
-
-    /**
-     * Apresenta a Introdução do jogo do modo punitivo.
-     * @author Diego Sarti
-     * @version 1.0
-     * @since 2025-05-05
-    */
-
-    public static void apresentarIntroducaoPunitivo() {
-        System.out.println("========== Introdução ==========");
-        
-        System.out.println("O ano é 2147, em um mundo digital distópico controlado por uma superinteligência conhecida como \"Mainframe\".");
-        System.out.println("Essa inteligência foi criada para organizar a programação de todas as máquinas e sistemas do mundo, mas algo deu errado.");
-        System.out.println("O Mainframe se corrompeu e agora governa uma cidade virtual fechada, onde os habitantes estão presos em um ciclo infinito, sem poder acessar o mundo exterior.");
         System.out.println("\n" + "O último Programador é você " + nome + ", uma pessoa que ainda possui conhecimento suficiente para modificar o código que mantém o Mainframe funcionando.");
         System.out.println("Você foi capturado e aprisionado dentro de um servidor de dados, e sua missão é escapar e restaurar a liberdade, atacando as falhas no código do Mainframe.");
         System.out.println("Para isso, você precisará aprender programação básica para reprogramar o sistema e abrir as portas para a liberdade.");
         System.out.println("================================");
-    } 
+    }
     
     /**
      * Mostra a vida do jogador.
@@ -474,6 +452,8 @@ public static void trocarPontos() {
                         pontuacao -= 100; // DIMINUI a pontuação
                         System.out.println("troca realizada!");
                         System.out.println("=========================");
+                        // vidaPersonagem();
+                        // System.out.println("Pontos: " + pontuacao);
                     }else {
                         System.out.println("quantas vidas você deseja comprar? [1/2]");
                         char quantidadeVidasCompradas =  scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minuscula.
@@ -484,6 +464,8 @@ public static void trocarPontos() {
                                 pontuacao -= 100; // DIMINUI a pontuação
                                 System.out.println("troca realizada!");
                                 System.out.println("=========================");
+                                // vidaPersonagem();
+                                // System.out.println("Pontos: " + pontuacao);
                             break;
                             case '2':
                                 vida++; // AUMENTA a VIDA
@@ -491,6 +473,8 @@ public static void trocarPontos() {
                                 pontuacao -= 200; // DIMINUI a pontuação
                                 System.out.println("troca realizada!");
                                 System.out.println("=========================");
+                                // vidaPersonagem();
+                                // System.out.println("Pontos: " + pontuacao);
                             break;
                             default: // Vai fazer a pergunta novamente
                             System.out.println("Opção inválida! Tente novamente.");
