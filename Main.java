@@ -62,26 +62,25 @@ public class Main {
     */
     public static void mostrarMenu() {
         Scanner scanner = new Scanner(System.in);
-        int opcao;
             System.out.println("===== MENU PRINCIPAL - RPG =====");
             System.out.println("1. Jogar");
             System.out.println("2. Instruções");
             System.out.println("3. Créditos");
             System.out.println("4. Sair");
             System.out.print("Escolha uma opção: ");
-            opcao = scanner.nextInt();
+            char opcao =  scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minuscula
 
             switch (opcao) {
-                case 1:
+                case '1':
                     escolherNickName();
                     break;
-                case 2:
+                case '2':
                     mostrarInstrucoes();
                     break;
-                case 3:
+                case '3':
                     carregarCreditos();
                     break;
-                case 4:
+                case '4':
                     System.out.println("=========================");
                     System.out.println("Saindo do jogo...");
                     break;
