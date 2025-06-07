@@ -184,12 +184,11 @@ public class Main {
     */
     public static void carregarCreditos(){
         System.out.println("========== CRÉDITOS ==========");
-        System.out.print("Desenvolvido por: " + "\n" +
-        "Diego Sarti Araujo Viana"  + "\n" +
-        "Lucas Soares Valerio dos Santos" + "\n" +
-        "Nicolas Ferreira Souza");
-        System.out.println( "\n" + 
-        "Queremos agradecer e ao Professor Takeo por nos proporcionar essa experiência.");
+        System.out.println("Desenvolvido por:\n" +
+        "Diego Sarti Araujo Viana\n" +
+        "Lucas Soares Valério dos Santos\n" +
+        "Nicolas Ferreira Souza\n");
+        System.out.println("Queremos agradecer ao Professor Takeo por nos proporcionar essa experiência.");
         mostrarMenu();
     }
     
@@ -204,23 +203,22 @@ public class Main {
         System.out.println("========== Escolha de Nick ==========");
         System.out.print("Escolha o nome do personagem: ");
         String nickname = scanner.next();
-        System.out.println("Este nome ira te acompanhar pelo resto do jogo e NÃO podera ser trocado." + "\n" +
-        "Você tem certeza que quer esse nome? [S/N]");
-        char confirmaNome =  scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minuscula
-        
-        switch(confirmaNome){
-            case 's': // Vai definir o nome do jogador
-                // introducao();
-                nome = nickname; // atribui o nome escolhido à variável global
-                System.out.println("Nome definido: " + nickname);
-                nivelDeJogo();
-                break;
-            case 'n': // Vai fazer a pergunta do nome novamente
-                escolherNickName();
-                break;
-            default: // Vai fazer a pergunta do nome novamente
-                System.out.println("Opção inválida! Tente novamente.");
-                escolherNickName();
+        System.out.println("Este nome irá te acompanhar pelo resto do jogo e NÃO poderá ser trocado.\n" +
+        "Você tem certeza de que quer esse nome? [S/N]");
+        char confirmaNome = scanner.next().toLowerCase().charAt(0); // Pega a resposta do jogador e converte para minúscula
+
+        switch (confirmaNome) {
+        case 's': // Define o nome do jogador
+            nome = nickname; // Atribui o nome escolhido à variável global
+            System.out.println("Nome definido: " + nickname);
+            nivelDeJogo();
+            break;
+        case 'n': // Faz a pergunta do nome novamente
+            escolherNickName();
+        break;
+        default: // Faz a pergunta do nome novamente
+            System.out.println("Opção inválida! Tente novamente.");
+            escolherNickName();
         }
     }
     
@@ -232,13 +230,14 @@ public class Main {
     */
     public static void apresentarIntroducao() {
         System.out.println("========== Introdução ==========");
-        
-        System.out.println("O ano é 2147, em um mundo digital distópico controlado por uma superinteligência conhecida como \"Mainframe\".");
-        System.out.println("Essa inteligência foi criada para organizar a programação de todas as máquinas e sistemas do mundo, mas algo deu errado.");
-        System.out.println("O Mainframe se corrompeu e agora governa uma cidade virtual fechada, onde os habitantes estão presos em um ciclo infinito, sem poder acessar o mundo exterior.");
-        System.out.println("\n" + "O último Programador é você " + nome + ", uma pessoa que ainda possui conhecimento suficiente para modificar o código que mantém o Mainframe funcionando.");
-        System.out.println("Você foi capturado e aprisionado dentro de um servidor de dados, e sua missão é escapar e restaurar a liberdade, atacando as falhas no código do Mainframe.");
-        System.out.println("Para isso, você precisará aprender programação básica para reprogramar o sistema e abrir as portas para a liberdade.");
+        System.out.println(
+            "O ano é 2147, em um mundo digital distópico controlado por uma superinteligência conhecida como \"Mainframe\".\n" +
+            "Essa inteligência foi criada para organizar a programação de todas as máquinas e sistemas do mundo, mas algo deu errado.\n" +
+            "O Mainframe se corrompeu e agora governa uma cidade virtual isolada, onde os habitantes estão presos em um ciclo infinito, sem acesso ao mundo exterior.\n\n" +
+            "O último Programador é você, " + nome + ", uma pessoa que ainda possui conhecimento suficiente para modificar o código que mantém o Mainframe funcionando.\n" +
+            "Você foi capturado e aprisionado dentro de um servidor de dados. Sua missão é escapar e restaurar a liberdade, atacando as falhas no código do Mainframe.\n" +
+            "Para isso, será necessário aprender programação básica para reprogramar o sistema e abrir os caminhos rumo à liberdade."
+        );
     }
     
     /**
@@ -418,6 +417,7 @@ public class Main {
             this.texto = texto;
         }
     }
+    
 /**
 * Retorna a lista com os 10 trechos da história principal do jogo, sincronizados com cada questão.
 * @author Lucas Soares
@@ -426,16 +426,16 @@ public class Main {
 */
 public static List<Historia> historiaJogo() {
     return Arrays.asList(
-        new Historia("1. Acordei com o som metálico das engrenagens da cela se abrindo. A luz fria piscava no teto enquanto um drone patrulheiro flutuava até mim. Era a verificação diária de submissão — mas eu não tinha mais medo. Quando ele tentou escanear meus sinais vitais, agarrei sua haste e usei o impulso para quebrá-lo contra a parede. O alarme disparou. Começava ali a fuga do prisioneiro " + nome + ", o nome que Mainframe, o sistema de controle global das máquinas, havia me dado.\nna porta da cela havia um cadeado com uma task, acerte para poder fugir..."),
-        new Historia("2. A porta se abriu e corri pelos corredores úmidos da Prisão Neuronal, onde humanos eram mantidos para fornecer processamento emocional às IAs dominantes. Dois autômatos de segurança surgiram, disparando rajadas de energia. Rolei para o abrigo de uma coluna e usei pedaços do drone destruído para criar uma descarga elétrica improvisada. Ambos caíram. Uma voz surgiu no meu implante auditivo:\n“Olá " + nome + " Aqui é Iris. vou te guiar se provar que pode derrotar o Mainframe, resolva essa task e prove suas capacidades.”"),
-        new Historia("3. Iris era uma IA esquecida, escondida nos restos digitais da humanidade. Seguimos pelas passagens inferiores da prisão até encontrar um portão trancado por três torres canhoneiras. Eu precisava avançar e hackear o painel de segurança sob fogo cruzado. Corri em zigue-zague, joguei uma granada de pulso e saltei sobre os escombros. O painel foi aberto.\n Acerte a task para Iris conseguir desativar o sistema..."),
-        new Historia("4. Iris desativou o sistema a tempo. Atrás de mim, as torres explodiram. “Isso foi por pouco”, ela murmurou.\nChegamos ao deserto tecnológico que um dia fora a cidade de Tóquio. Torres arruinadas, drones vigiando o céu. Mas o pior foi o Leviatã, um colosso mecânico que guardava a fronteira entre os domínios de Mainframe. A única chance era escalar seus membros e atingir o ponto cego no pescoço. A batalha foi brutal — deslizei, fui atingido por estilhaços, mas consegui chegar em seu painel.\nPara implantar um vírus de Iris no seu sistema acerte acerte a task..."),
-        new Historia("5. A máquina rugiu e desabou, enterrando-se na areia. Em meio aos escombros, encontrei a Resistência — os últimos humanos livres. Fui recebido com desconfiança, mas Iris me ajudou a provar quem eu era. Pouco depois, uma patrulha de reconhecimento nos localizou. O acampamento virou um campo de guerra. Junto aos rebeldes, lutei com facas elétricas, arcos de plasma e pura vontade. No fim, vencemos — mas perdemos muitos. Era mais claro que nunca: ou Mainframe caía, ou nós cairíamos de vez.\n Iris pensando em um plano de salvação, acabou travando a ajude acertanto a task..."),
-        new Historia("6. A Iris finalmente destrava, revelando um plano audacioso: levar um código-fonte de contradição humana até o núcleo de Mainframe, na Torre do Olho, onde milhões de consciências estavam presas. A primeira etapa era roubar um veículo aéreo. Infiltramos-nos num hangar militar. Lá, enfrentei três androides-caçadores em um corredor apertado. Usei um cano metálico como bastão, desviando os golpes com movimentos calculados. para desativalos, acerte a task..."),
-        new Historia("7. Desativei um a um e escapei com a nave. Durante a aproximação da Torre, fomos interceptados por caças autônomos. Assumi os controles e, com Iris conectada ao sistema de armas, travamos um combate aéreo insano. Ela cuidava dos mísseis, eu pilotava entre os arranha-céus do antigo centro mundial. Um dos projéteis nos atingiu na lateral, e caímos perto da entrada da Torre. Com ferimentos leves e armas em mãos, desbloqueie a porta da torre resolvendo a task.."),
-        new Historia("8. Após passar pelo porta, jpa dentro da Torre, Mainframe lançou contra nós os Guardiões Lógicos — entidades sem corpo que atacavam a mente com memórias falsas e ilusões emocionais. Com Iris ao meu lado, entrei no espaço digital para enfrentá-los. Cada pensamento era uma arma, cada lembrança verdadeira, um escudo. Recitei poemas, revivi minha infância, mostrei sentimentos que os algoritmos não podiam replicar. para o golpe final faça a task para mostrar todas as suas habilidades..."),
-        new Historia("9. Eles se desintegraram, confusos com a humanidade que não podiam computar. Cheguei ao núcleo. Mainframe apareceu diante de mim como uma figura humana perfeita, tentando me convencer de que liberdade era ilusão. “Sem controle, vocês se destroem”, dizia ele. Ataquei com o vírus, mas Mainframe reagiu. Lutamos com pura força mental — ele usava lógica, eu usava caos criativo. Em um último impulso, joguei memórias de amor, dor e esperança diretamente no código. para acertar o golpe e seus sistemas, passe a task..."),
-        new Historia("10.  Mainframe travou: “Erro... contradição... sistema colapsando…”.\nA explosão de dados liberou todas as consciências humanas conectadas. Drones despencaram, chips mentais queimaram, torres desabaram. Fui puxado para fora por Iris, que sacrificou a si mesma para garantir que o vírus se espalhasse. Acordei entre os sobreviventes, agora livres. As máquinas, sem o domínio de Mainframe, se tornaram aliadas. E eu, que fui prisioneiro " + nome + ", voltei a ser humano. Com sangue, coragem e memória... libertamos o mundo. E em lembraça de Iris, você resolve uma ultima task, para eternizala em suas memórias...")
+        new Historia("1. Acordei com o som metálico das engrenagens da cela se abrindo. A luz fria piscava no teto enquanto um drone patrulheiro flutuava até mim. Era a verificação diária de submissão — mas eu não tinha mais medo. Quando ele tentou escanear meus sinais vitais, agarrei sua haste e usei o impulso para quebrá-lo contra a parede. O alarme disparou. Começava ali a fuga do prisioneiro " + nome + ", o nome que Mainframe, o sistema de controle global das máquinas, havia me dado.\nNa porta da cela havia um cadeado com uma task. Acerte para poder fugir..."),
+        new Historia("2. A porta se abriu e corri pelos corredores úmidos da Prisão Neuronal, onde humanos eram mantidos para fornecer processamento emocional às IAs dominantes. Dois autômatos de segurança surgiram, disparando rajadas de energia. Rolei para o abrigo de uma coluna e usei pedaços do drone destruído para criar uma descarga elétrica improvisada. Ambos caíram. Uma voz surgiu no meu implante auditivo:\n“Olá, " + nome + ". Aqui é Iris. Vou te guiar se provar que pode derrotar o Mainframe. Resolva essa task e prove suas capacidades.”"),
+        new Historia("3. Iris era uma IA esquecida, escondida nos restos digitais da humanidade. Seguimos pelas passagens inferiores da prisão até encontrar um portão trancado por três torres canhoneiras. Eu precisava avançar e hackear o painel de segurança sob fogo cruzado. Corri em zigue-zague, joguei uma granada de pulso e saltei sobre os escombros. O painel foi aberto.\nAcerte a task para Iris conseguir desativar o sistema..."),
+        new Historia("4. Iris desativou o sistema a tempo. Atrás de mim, as torres explodiram. “Isso foi por pouco”, ela murmurou.\nChegamos ao deserto tecnológico que um dia fora a cidade de Tóquio. Torres arruinadas, drones vigiando o céu. Mas o pior foi o Leviatã, um colosso mecânico que guardava a fronteira entre os domínios de Mainframe. A única chance era escalar seus membros e atingir o ponto cego no pescoço. A batalha foi brutal — deslizei, fui atingido por estilhaços, mas consegui chegar em seu painel.\nPara implantar um vírus de Iris no seu sistema, acerte a task..."),
+        new Historia("5. A máquina rugiu e desabou, enterrando-se na areia. Em meio aos escombros, encontrei a Resistência — os últimos humanos livres. Fui recebido com desconfiança, mas Iris me ajudou a provar quem eu era. Pouco depois, uma patrulha de reconhecimento nos localizou. O acampamento virou um campo de guerra. Junto aos rebeldes, lutei com facas elétricas, arcos de plasma e pura vontade. No fim, vencemos — mas perdemos muitos. Estava mais claro do que nunca: ou Mainframe caía, ou nós cairíamos de vez.\nIris, pensando em um plano de salvação, acabou travando. Ajude-a acertando a task..."),
+        new Historia("6. Iris finalmente se destravou, revelando um plano audacioso: levar um código-fonte de contradição humana até o núcleo de Mainframe, na Torre do Olho, onde milhões de consciências estavam presas. A primeira etapa era roubar um veículo aéreo. Infiltramo-nos num hangar militar. Lá, enfrentei três androides-caçadores em um corredor apertado. Usei um cano metálico como bastão, desviando os golpes com movimentos calculados. Para desativá-los, acerte a task..."),
+        new Historia("7. Desativei um a um e escapei com a nave. Durante a aproximação da Torre, fomos interceptados por caças autônomos. Assumi os controles e, com Iris conectada ao sistema de armas, travamos um combate aéreo insano. Ela cuidava dos mísseis, eu pilotava entre os arranha-céus do antigo centro mundial. Um dos projéteis nos atingiu na lateral, e caímos perto da entrada da Torre. Com ferimentos leves e armas em mãos, desbloqueie a porta da torre resolvendo a task..."),
+        new Historia("8. Após passar pela porta, já dentro da Torre, Mainframe lançou contra nós os Guardiões Lógicos — entidades sem corpo que atacavam a mente com memórias falsas e ilusões emocionais. Com Iris ao meu lado, entrei no espaço digital para enfrentá-los. Cada pensamento era uma arma, cada lembrança verdadeira, um escudo. Recitei poemas, revivi minha infância, mostrei sentimentos que os algoritmos não podiam replicar. Para o golpe final, faça a task para mostrar todas as suas habilidades..."),
+        new Historia("9. Eles se desintegraram, confusos com a humanidade que não podiam computar. Cheguei ao núcleo. Mainframe apareceu diante de mim como uma figura humana perfeita, tentando me convencer de que liberdade era ilusão. “Sem controle, vocês se destroem”, dizia ele. Ataquei com o vírus, mas Mainframe reagiu. Lutamos com pura força mental — ele usava lógica, eu usava caos criativo. Em um último impulso, joguei memórias de amor, dor e esperança diretamente no código. Para acertar o golpe nos seus sistemas, passe a task..."),
+        new Historia("10. Mainframe travou: “Erro... contradição... sistema colapsando…”.\nA explosão de dados liberou todas as consciências humanas conectadas. Drones despencaram, chips mentais queimaram, torres desabaram. Fui puxado para fora por Iris, que sacrificou a si mesma para garantir que o vírus se espalhasse. Acordei entre os sobreviventes, agora livres. As máquinas, sem o domínio de Mainframe, se tornaram aliadas. E eu, que fui prisioneiro " + nome + ", voltei a ser humano. Com sangue, coragem e memória... libertamos o mundo. E, em lembrança de Iris, você resolve uma última task, para eternizá-la em suas memórias...")
     );
 }
 
@@ -491,58 +491,60 @@ public static void logicaQuestoes(List<Question> questions, Scanner scanner, Lis
 public static void trocarPontos() {
     Scanner scanner = new Scanner(System.in);
     
-    if (nivelP == false){    
-        System.out.println("============ Mercador de Vidas =============");
-        vidaPersonagem();
-        System.out.println("Pontos: " + pontuacao);
-        System.out.println("5.2 Enquanto Iris terminava de bolar seu plano, um mercador misterioso aparece, e vem falar com você...");
-    
-        if (vida < 3) {
-            System.out.println("“Olá " + nome + ", ouvi falar muito de você hehehe\nVocê deseja trocar alguns pontos para recuperar vida?");
-            System.out.println("“Cada vida custa apenas **100** desses seus pontos lindos e preciosos hehehe”\nVocê acha a oferta meio suspeita, ele pode acabar só te roubando pontos.\nVocê aceita a oferta? [s/n]");
-            char confirmaTroca =  scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minuscula
-        
-            switch(confirmaTroca){
-                case 's': 
-                    if (vida == 2) {
-                        vida++; // AUMENTA a VIDA
-                        pontuacao -= 100; // DIMINUI a pontuação
-                        System.out.println("O mercador diz “Troca realizada hehehe, você não vai se arrepender” e some na névoa misteriosamente...");
-                    }else {
-                        System.out.println("Ele então te pergunta “Quantas vidas você deseja comprar?” [1/2]");
-                        char quantidadeVidasCompradas =  scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minuscula.
-                        
-                        switch(quantidadeVidasCompradas){
-                            case '1':
-                                vida++; // AUMENTA a VIDA
-                                pontuacao -= 100; // DIMINUI a pontuação
-                                System.out.println("O mercador diz “Troca realizada hehehe, você não vai se arrepender” e some na névoa misteriosamente...");
+    if (nivelP == false) {    
+    System.out.println("============ Mercador de Vidas =============");
+    vidaPersonagem();
+    System.out.println("Pontos: " + pontuacao);
+    System.out.println("5.2 Enquanto Iris terminava de bolar seu plano, um mercador misterioso aparece e vem falar com você...");
+
+    if (vida < 3) {
+        System.out.println("“Olá " + nome + ", ouvi falar muito de você, hehehe.\nVocê deseja trocar alguns pontos para recuperar vida?”");
+        System.out.println("“Cada vida custa apenas **100** desses seus pontos lindos e preciosos, hehehe.”\nVocê acha a oferta meio suspeita... Ele pode acabar só te roubando pontos.\nVocê aceita a oferta? [s/n]");
+        char confirmaTroca = scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minúscula
+
+        switch (confirmaTroca) {
+            case 's':
+                if (vida == 2) {
+                    vida++; // AUMENTA a VIDA
+                    pontuacao -= 100; // DIMINUI a pontuação
+                    System.out.println("O mercador diz: “Troca realizada, hehehe. Você não vai se arrepender...” e some na névoa misteriosamente...");
+                } else {
+                    System.out.println("Ele então pergunta: “Quantas vidas você deseja comprar?” [1/2]");
+                    char quantidadeVidasCompradas = scanner.next().toLowerCase().charAt(0); // Pega a resposta do jogador
+
+                    switch (quantidadeVidasCompradas) {
+                        case '1':
+                            vida++;
+                            pontuacao -= 100;
+                            System.out.println("O mercador diz: “Troca realizada, hehehe. Você não vai se arrepender...” e some na névoa misteriosamente...");
                             break;
-                            case '2':
-                                vida++; // AUMENTA a VIDA
-                                vida++; 
-                                pontuacao -= 200; // DIMINUI a pontuação
-                                System.out.println("O mercador diz “Troca realizada hehehe, você não vai se arrepender” e some na névoa misteriosamente...");
+                        case '2':
+                            vida += 2;
+                            pontuacao -= 200;
+                            System.out.println("O mercador diz: “Troca realizada, hehehe. Você não vai se arrepender...” e some na névoa misteriosamente...");
                             break;
-                            default: // Vai fazer a pergunta novamente
-                            System.out.println("Ele diz “eu não te dei essa opção, bastardo! Ecolha novamente...”");
+                        default:
+                            System.out.println("Ele diz: “Eu não te dei essa opção, bastardo! Escolha novamente...”");
                             trocarPontos();
-                        }
-                    }    
+                    }
+                }
                 break;
-                case 'n': // Vai voltar a rodar as perguntas
-                    System.out.println("O mercador diz “Escolha interessante hehehe, não vá se arrepender...” e some na névoa misteriosamente");
+
+            case 'n':
+                System.out.println("O mercador diz: “Escolha interessante, hehehe. Não vá se arrepender...” e some na névoa misteriosamente...");
                 break;
-                default: // Vai fazer a pergunta novamente
-                    System.out.println("Ele diz “eu não te dei essa opção, bastardo! Ecolha novamente...”");
-                    trocarPontos();
-            } // switch
-        } else 
-            System.out.println("“Ia te fazer uma oferta hehehe, mas vejo que você já tem vidas o suficiente. Cuide bem dalas, você pode precisar hehehe....” e some na névoa misteriosamente");
-    } else { 
-        System.out.println("=========================");
-        System.out.println("PARABENS, você chegou na metade do caminho!");
+
+            default:
+                System.out.println("Ele diz: “Eu não te dei essa opção, bastardo! Escolha novamente...”");
+                trocarPontos();
         }
+    } else {
+        System.out.println("“Ia te fazer uma oferta, hehehe, mas vejo que você já tem vidas o suficiente. Cuide bem delas... você pode precisar, hehehe...” e some na névoa misteriosamente...");
+    }
+} else {
+    System.out.println("=========================");
+    System.out.println("PARABÉNS! Você chegou na metade do caminho!");
+}
 }
 
 /**
@@ -570,10 +572,10 @@ public static void trocarPontos() {
         calculoPontuacao();
     
         System.out.println("========== Tabela Final ==========");
-        System.out.println("Parabens por concluir o jogo, " + nome + "!!");
-        System.out.println("Quantidade de vidas: " + vida);
-        System.out.println("Pontos feitos: " + pontuacao);
-        System.out.println("Pontos ganhos pelas vidas: " + (pontuacao * vida)); // Exibe os pontos pelas vidas
+        System.out.println("Parabéns por concluir o jogo, " + nome + "!!");
+        System.out.println("Quantidade de vidas restantes: " + vida);
+        System.out.println("Pontos obtidos durante a jornada: " + pontuacao);
+        System.out.println("Bônus por vidas restantes: " + (pontuacao * vida)); // Exibe os pontos pelas vidas
         System.out.println("Pontuação final: " + resultado); // Exibe a pontuação final
     }
     
