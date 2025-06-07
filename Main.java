@@ -105,26 +105,26 @@ public class Main {
             System.out.println("4. Punitivo");
             System.out.println("5. Voltar para o Menu");
             System.out.print("Escolha uma opção: ");
-            int dificuldade = scanner.nextInt();
+            char dificuldade =  scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minuscula
             
             switch (dificuldade) {
-                case 1:
+                case '1':
                     apresentarIntroducao();
                     nivelFacil();
                     break;
-                case 2:
+                case '2':
                     apresentarIntroducao();
                     nivelNormal();
                     break;
-                case 3:
+                case '3':
                     apresentarIntroducao();
                     nivelDificil();
                     break;
-                case 4:
+                case '4':
                     apresentarIntroducao();
                     nivelPunitivo();
                     break;
-                case 5:
+                case '5':
                     System.out.println("Voltando...");
                     mostrarMenu();
                     break;
@@ -132,7 +132,7 @@ public class Main {
                     System.out.println("Opção inválida! Tente novamente.");
                     nivelDeJogo();
             }
-    }        
+    }  
     
     /**
      * Introdução e Tutorial do jogo.
