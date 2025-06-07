@@ -39,18 +39,14 @@ Diego Sarti
 Criação do nivelPunitivo - 26/05/2025
 Diego Sarti
 
-tabelaFinalPunitivo - 26/05/2025
-Diego Sarti
-
-calculoPontuacaoPunitivo - 26/05/2025
-Diego Sarti
-
 logicaQuestoes - 04/06/2025
 Lucas Soares
 
 trocarPontos - 04/06/2025
 Lucas Soares
 *******************************************************************************/
+
+
 import java.util.*;
 public class Main {
     
@@ -132,7 +128,7 @@ public class Main {
                     System.out.println("Opção inválida! Tente novamente.");
                     nivelDeJogo();
             }
-    }  
+    }        
     
     /**
      * Introdução e Tutorial do jogo.
@@ -240,7 +236,6 @@ public class Main {
         System.out.println("\n" + "O último Programador é você " + nome + ", uma pessoa que ainda possui conhecimento suficiente para modificar o código que mantém o Mainframe funcionando.");
         System.out.println("Você foi capturado e aprisionado dentro de um servidor de dados, e sua missão é escapar e restaurar a liberdade, atacando as falhas no código do Mainframe.");
         System.out.println("Para isso, você precisará aprender programação básica para reprogramar o sistema e abrir as portas para a liberdade.");
-       
     }
     
     /**
@@ -254,20 +249,6 @@ public class Main {
     public static void vidaPersonagem() {
         System.out.println("❤️ : " + vida);
     }
-    
-    /**
-     * Mostra a vida do jogador no modo punitivo.
-     * @author Diego SArti
-     * @version 1.0
-     * @since 2025-05-07
-    */
-
-    static int vidaPunitivo = 1;
-
-    public static void vidaPersonagemPunitivo() {
-        System.out.println("❤️ : " + vidaPunitivo);
-    }
-
     
 
 /**
@@ -332,7 +313,7 @@ public class Main {
         );
 
         Collections.shuffle(allQuestions);
-        logicaQuestoes(allQuestions, scanner); // <-- CORRIGIDO
+        logicaQuestoes(allQuestions, scanner); 
     }
     
 /**
@@ -359,7 +340,7 @@ public class Main {
         );
 
         Collections.shuffle(allQuestions);
-        logicaQuestoes(allQuestions, scanner); // <-- CORRIGIDO
+        logicaQuestoes(allQuestions, scanner); 
     }
     
 /**
@@ -385,8 +366,41 @@ public static void nivelDificil() {
     );
 
     Collections.shuffle(allQuestions);
-    logicaQuestoes(allQuestions, scanner); // <-- CORRIGIDO
+    logicaQuestoes(allQuestions, scanner); 
 }
+
+/**
+* printa as perguntas do modo Punitivo do jogo
+* @author Diego Sarti
+* @version 1.0
+* @since 2025-05-13
+*/
+    static boolean nivelP = false;
+
+    public static void nivelPunitivo() {
+        Scanner scanner = new Scanner(System.in); // Cria um objeto Scanner para ler a entrada do teclado
+        
+        nivelP = true;
+        vida--;
+        vida--;
+
+        // Cria uma lista de perguntas com alternativas e a resposta correta
+        List<Question> allQuestions = Arrays.asList(
+            new Question("Qual é a saída do código: for(int i = 0; i < 5; i+=2) { System.out.print(i + \" \"); }", new String[]{"0 2 4", "0 1 2 3 4", "1 3 5"}, 0),
+            new Question("O que o comando 'continue' faz dentro de um laço?", new String[]{"Termina o laço", "Ignora a iteração atual e continua com a próxima", "Sai completamente do método"}, 1),
+            new Question("Qual é a diferença entre 'while' e 'do-while'?", new String[]{"'while' executa ao menos uma vez; 'do-while' pode não executar", "'do-while' executa ao menos uma vez; 'while' pode não executar", "Nenhuma, ambos são iguais"}, 1),
+            new Question("Qual será a saída do código: int i = 10; while(i < 10) { System.out.print(i); i++; }", new String[]{"10", "Nada", "Erro de compilação"}, 1),
+            new Question("Como declarar um laço infinito usando 'for' corretamente?", new String[]{"for(;;)", "for(1;;1)", "for(int i=0; i<∞; i++)"}, 0),
+            new Question("Qual o erro do código: for(int i = 0; i < 5; i--) { System.out.println(i); }", new String[]{"Nenhum, é válido", "Loop infinito", "Erro de compilação"}, 1),
+            new Question("Em um 'for' aninhado, quantas vezes o bloco interno executa?\nfor(int i=0; i<3; i++)\n for(int j=0; j<2; j++)", new String[]{"3", "2", "6"}, 2),
+            new Question("Qual é a saída?\nint x = 1;\nwhile (x < 5) {\n  x++;\n  if(x == 3) continue;\n  System.out.print(x);\n}", new String[]{"2345", "245", "345"}, 1),
+            new Question("É possível usar 'break' dentro de um 'for' aninhado para sair de ambos os laços diretamente?", new String[]{"Sim, usando break duas vezes", "Não, só sai do laço mais interno", "Sim, sempre sai de todos os laços"}, 1),
+            new Question("O que acontece com a variável de controle após um 'break' dentro de um laço 'for'?", new String[]{"Ela continua sendo incrementada", "Ela para no valor atual", "Ela é zerada"}, 1)
+        );
+
+        Collections.shuffle(allQuestions);
+        logicaQuestoes(allQuestions, scanner);
+    }
 
 /**
 * Roda a logica das questoes.
@@ -397,6 +411,7 @@ public static void nivelDificil() {
 public static void logicaQuestoes(List<Question> questions, Scanner scanner) {
     int questionIndex = 0; // Índice da pergunta atual (quantas já foram respondidas corretamente)
 
+    
     // Enquanto o usuário não tiver acertado o numero de perguntas declarado aqui
     while (questionIndex < 10 && vida > 0) {
         
@@ -434,14 +449,17 @@ public static void logicaQuestoes(List<Question> questions, Scanner scanner) {
 */
 public static void trocarPontos() {
     Scanner scanner = new Scanner(System.in);
-    System.out.println("============ Mercado de Vidas =============");
-    vidaPersonagem();
-    System.out.println("Pontos: " + pontuacao);
-    System.out.println("PARABENS, você chegou na metade do caminho!");
-    if (vida < 3) {
-        System.out.println("Você deseja trocar pontos para recuperar vida? [s/n]");
-        System.out.println("***1 vida custa 100 pontos***");
-        char confirmaTroca =  scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minuscula
+    
+    if (nivelP == false){    
+        System.out.println("============ Mercado de Vidas =============");
+        vidaPersonagem();
+        System.out.println("Pontos: " + pontuacao);
+        System.out.println("PARABENS, você chegou na metade do caminho!");
+    
+        if (vida < 3) {
+            System.out.println("Você deseja trocar pontos para recuperar vida? [s/n]");
+            System.out.println("***1 vida custa 100 pontos***");
+            char confirmaTroca =  scanner.next().toLowerCase().charAt(0); // Vai pegar a resposta do jogador e colocar sempre em letra minuscula
         
             switch(confirmaTroca){
                 case 's': 
@@ -472,72 +490,20 @@ public static void trocarPontos() {
                     }    
                 break;
                 case 'n': // Vai voltar a rodar as perguntas
-                    System.out.println("Tudo bem, boa sorte no resto da jornada!!");
+                    System.out.println("Tudo bem, boa sorte em sua jornada!!");
                 break;
                 default: // Vai fazer a pergunta novamente
                     System.out.println("Opção inválida! Tente novamente.");
                     trocarPontos();
+            } // switch
+        } else 
+            System.out.println("Você já tem vidas o suficiente\nContinue assim, você está indo bem!!");
+    } else { 
+        System.out.println("=========================");
+        System.out.println("PARABENS, você chegou na metade do caminho!");
         }
-    } else {
-        System.out.println("Você já tem vidas o suficiente\nContinue assim, você está indo bem!!");
-    }
 }
 
-/**
-* printa as perguntas do modo Punitivo do jogo
-* @author Diego Sarti
-* @version 1.0
-* @since 2025-05-13
-*/
-    public static void nivelPunitivo() {
-        Scanner scanner = new Scanner(System.in); // Cria um objeto Scanner para ler a entrada do teclado
-
-        // Cria uma lista de perguntas com alternativas e a resposta correta
-        List<Question> allQuestions = Arrays.asList(
-            new Question("Qual é a saída do código: for(int i = 0; i < 5; i+=2) { System.out.print(i + \" \"); }", new String[]{"0 2 4", "0 1 2 3 4", "1 3 5"}, 0),
-            new Question("O que o comando 'continue' faz dentro de um laço?", new String[]{"Termina o laço", "Ignora a iteração atual e continua com a próxima", "Sai completamente do método"}, 1),
-            new Question("Qual é a diferença entre 'while' e 'do-while'?", new String[]{"'while' executa ao menos uma vez; 'do-while' pode não executar", "'do-while' executa ao menos uma vez; 'while' pode não executar", "Nenhuma, ambos são iguais"}, 1),
-            new Question("Qual será a saída do código: int i = 10; while(i < 10) { System.out.print(i); i++; }", new String[]{"10", "Nada", "Erro de compilação"}, 1),
-            new Question("Como declarar um laço infinito usando 'for' corretamente?", new String[]{"for(;;)", "for(1;;1)", "for(int i=0; i<∞; i++)"}, 0),
-            new Question("Qual o erro do código: for(int i = 0; i < 5; i--) { System.out.println(i); }", new String[]{"Nenhum, é válido", "Loop infinito", "Erro de compilação"}, 1),
-            new Question("Em um 'for' aninhado, quantas vezes o bloco interno executa?\nfor(int i=0; i<3; i++)\n for(int j=0; j<2; j++)", new String[]{"3", "2", "6"}, 2),
-            new Question("Qual é a saída?\nint x = 1;\nwhile (x < 5) {\n  x++;\n  if(x == 3) continue;\n  System.out.print(x);\n}", new String[]{"2345", "245", "345"}, 1),
-            new Question("É possível usar 'break' dentro de um 'for' aninhado para sair de ambos os laços diretamente?", new String[]{"Sim, usando break duas vezes", "Não, só sai do laço mais interno", "Sim, sempre sai de todos os laços"}, 1),
-            new Question("O que acontece com a variável de controle após um 'break' dentro de um laço 'for'?", new String[]{"Ela continua sendo incrementada", "Ela para no valor atual", "Ela é zerada"}, 1)
-        );
-
-        // Embaralha a ordem das perguntas para que a sequência seja diferente a cada execução
-        Collections.shuffle(allQuestions);
-
-        int questionIndex = 0; // Índice da pergunta atual (quantas já foram respondidas corretamente)
-
-        // Enquanto o usuário não tiver acertado o numero de perguntas declarado aqui
-        while (questionIndex < 10 || vida > 0){
-            // Obtém a próxima pergunta da lista (baseada no índice atual)
-            Question q = allQuestions.get(questionIndex);
-
-            // Chama o método ask() da pergunta, que exibe a pergunta e retorna se a resposta foi correta
-            boolean correct = q.ask(scanner);
-
-            // Se a resposta estiver correta, avança para a próxima pergunta
-            if (correct) {
-                System.out.println("Correto!");
-                System.out.println("=========================");
-                vidaPersonagemPunitivo();
-                questionIndex++; // Avança para a próxima pergunta
-                pontuacao += 100; // Aumenta a pontuação por acerto
-            } else {
-                // Se a resposta estiver errada, não avança — a mesma pergunta será repetida e tira uma vida
-                System.out.println("Errado! Tente novamente.");
-                System.out.println("=========================");
-                vidaPunitivo--;
-                vidaPersonagemPunitivo();
-            } 
-        }
-        // Quando todas as 10 perguntas forem respondidas corretamente, o jogo termina
-        tabelaFinalPunitivo();
-    }
-    
 /**
  * Pontuação do jogo
   * @author Diego Sarti, Lucas Soares
@@ -551,6 +517,7 @@ public static void trocarPontos() {
     public static void calculoPontuacao() {
         resultado = (pontuacao * vida) + pontuacao; // Resultado final da pontuação
     }
+    
 /**
  * Mostra tabela final do jogo
  * @author Diego Sarti, Lucas Soares
@@ -568,38 +535,6 @@ public static void trocarPontos() {
         System.out.println("Pontos ganhos pelas vidas: " + (pontuacao * vida)); // Exibe os pontos pelas vidas
         System.out.println("Pontuação final: " + resultado); // Exibe a pontuação final
     }
-    
-    
-    /**
- * Pontuação do jogo
- * @author Diego Sarti
- * @version 1.0
- * @since 2025-05-12
- */   
-    static int pontuacaoPunitivo = 0;
-    static int resultadoPunitivo; // Variável global para armazenar a pontuação final
-
-    public static void calculoPontuacaoPunitivo() {
-        resultadoPunitivo = (pontuacaoPunitivo * vidaPunitivo) + pontuacaoPunitivo; // Resultado final da pontuação
-    }
-/**
- * Mostra tabela final do jogo
- * @author Diego Sarti
- * @version 1.0
- * @since 2025-05-12
- */   
-    public static void tabelaFinalPunitivo() {
-        // Chama o método para calcular a pontuação
-        calculoPontuacaoPunitivo();
-    
-        System.out.println("========== Tabela Final ==========");
-        System.out.println("Parabens por concluir o jogo, " + nome + "!!");
-        System.out.println("Quantidade de vidas: " + vidaPunitivo);
-        System.out.println("Pontos feitos: " + pontuacaoPunitivo);
-        System.out.println("Pontos ganhos pelas vidas: " + (pontuacaoPunitivo * vidaPunitivo)); // Exibe os pontos pelas vidas
-        System.out.println("Pontuação final: " + resultadoPunitivo); // Exibe a pontuação final
-    }
-    
     
 /**
 * printa o Menu principal do jogo
